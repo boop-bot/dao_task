@@ -13,7 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class BookServiceImpl implements BookService<Book> {
+public class BookServiceImpl implements BookService<Integer, Book> {
     private static final Logger logger = LogManager.getLogger(BookServiceImpl.class);
     private static BookServiceImpl instance;
     private final BookDaoImpl bookDaoImpl = BookDaoImpl.getInstance();
@@ -51,13 +51,47 @@ public class BookServiceImpl implements BookService<Book> {
     }
 
     @Override
-    public void update(Book book) throws BookServiceException {
+    public void deleteByID(Integer id) throws BookServiceException {
         try {
-            bookDaoImpl.delete(book);
+            bookDaoImpl.deleteByID(id);
         } catch (DaoException e) {
             logger.error(e);
-            throw new BookServiceException("Could not connect with warehouse");
+            throw new BookServiceException(e);
         }
+        logger.info("Book deleted by id " + id);
+    }
+
+    @Override
+    public void deleteByTitle(String title) throws BookServiceException {
+        try {
+            bookDaoImpl.deleteByTitle(title);
+        } catch (DaoException e) {
+            logger.error(e);
+            throw new BookServiceException(e);
+        }
+        logger.info("Book deleted by title " + title);
+    }
+
+    @Override
+    public void updateByID(Book book, Integer id) throws BookServiceException {
+        try {
+            bookDaoImpl.updateByID(book, id);
+        } catch (DaoException e) {
+            logger.error(e);
+            throw new BookServiceException(e);
+        }
+        logger.info("book updated by id " + id);
+    }
+
+    @Override
+    public void updateByTitle(Book book, String title) throws BookServiceException {
+        try {
+            bookDaoImpl.updateByTitle(book, title);
+        } catch (DaoException e) {
+            logger.error(e);
+            throw new BookServiceException(e);
+        }
+        logger.info("book updated by title " + title);
     }
 
     @Override
@@ -84,6 +118,30 @@ public class BookServiceImpl implements BookService<Book> {
         }
         logger.info("Books found in warehouse" + bookList);
         return bookList;
+    }
+
+    public Book findByID(Integer id) throws BookServiceException {
+        Book book = new Book();
+        try {
+            book = bookDaoImpl.findByID(id);
+        } catch (DaoException e) {
+            logger.error(e);
+            throw new BookServiceException(e);
+        }
+        logger.info("Book found " + book);
+        return book;
+    }
+
+    public Book findByTitle(String title) throws BookServiceException {
+        Book book = new Book();
+        try {
+            book = bookDaoImpl.findByTitle(title);
+        } catch (DaoException e) {
+            logger.error(e);
+            throw new BookServiceException(e);
+        }
+        logger.info("Book found " + book);
+        return book;
     }
 
     @Override
