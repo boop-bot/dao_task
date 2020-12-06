@@ -1,0 +1,5 @@
+100;1984;Orwell;AST;1948;200;20;PERFECT
+101;Master and Margarita;Bulgakov;Paris;1967;300;30;CASE
+102;Harry Potter;Rowling;EKSMO;1997;400;15;COMB
+103;Lord of the rings;Tolkien;ROSMEN;1954;400;40;COIL
+104;Game of thrones;Martin;Alpha;1996;550;25;SADDLE
