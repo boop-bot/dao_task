@@ -3,7 +3,6 @@ package edu.epam.task.service.impl;
 import edu.epam.task.entity.Binding;
 import edu.epam.task.entity.Book;
 import edu.epam.task.exception.BookServiceException;
-import edu.epam.task.service.BookService;
 import edu.epam.task.util.BookReader;
 import edu.epam.task.util.comparator.PriceComparator;
 import org.testng.annotations.*;

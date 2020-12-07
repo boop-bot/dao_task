@@ -3,7 +3,6 @@ package edu.epam.task.service;
 import edu.epam.task.entity.Book;
 import edu.epam.task.entity.Entity;
 import edu.epam.task.exception.BookServiceException;
-import edu.epam.task.exception.DaoException;
 
 import java.util.Comparator;
 import java.util.List;
